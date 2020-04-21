@@ -1,0 +1,153 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>定格动画手机端DEMO</title>
+	<link rel="stylesheet" type="text/css" href="static/css/layout.css">
+	<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/vConsole/3.2.0/vconsole.min.js"></script>
+	<script src="static/js/jspdf.min.js"></script>
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="device-width, initial-scale=1">
+</head>
+
+<body>
+	<!-- <audio controls autoplay></audio> -->
+	<audio id="voice" src="catch.wav"></audio>
+	<audio id="voice_finished" src="catch.wav"></audio>
+	<div class="container-fluid">
+		<div id="topSide">
+			<span class="glyphicon glyphicon-arrow-left" id="returngo"></span>
+			<video src="https://qhjrecom1.oss-cn-beijing.aliyuncs.com/production/shuniandaji.mp4" controls></video>
+			<video src="https://qhjrecom1.oss-cn-beijing.aliyuncs.com/production/shuniandaji.mp4" controls></video>
+			<video src="https://qhjrecom1.oss-cn-beijing.aliyuncs.com/production/shuniandaji.mp4" controls></video>
+			<video src="https://qhjrecom1.oss-cn-beijing.aliyuncs.com/production/shuniandaji.mp4" controls></video>
+			<video src="https://qhjrecom1.oss-cn-beijing.aliyuncs.com/production/shuniandaji.mp4" controls></video>
+			<video src="https://qhjrecom1.oss-cn-beijing.aliyuncs.com/production/shuniandaji.mp4" controls></video>
+		</div>
+		<div id="bottomSide">
+			<div id="leftSide">
+				<img src="./static/image/change.png" class='buttonImg' id="change"></img>
+				<img src="./static/image/set.png" class='buttonImg' id="set_frame shift"></img>
+				<img src="./static/image/time.png" class="buttonImg" id="relay_photo"></img>
+				<img src="./static/image/voice.png" class="buttonImg" id="audio"></img>
+				<img src="./static/image/mobang.png" class="buttonImg" id="set_frame"></img>
+				<img src="./static/image/video.png" class="buttonImg" id="set_cover"></img>
+				<img src="./static/image/play.png" class="buttonImg" id="play"></img>
+				<img src="./static/image/camera2.png" class="buttonImg" id="continue"></img>
+				<img src="./static/image/camera2.png" class="buttonImg buttonPlay" id="photo"></img>
+			</div>
+			<div id="left-side">
+				<!-- <div class="thumb" id="frame"></div> -->
+				<div class="pages">
+					<p>总帧数：<span id='current_page'>0</span></p>
+				</div>
+			</div>
+			<div class="copyButton">
+				<button class="btn btn-primary" id="copy">复制</button>
+				<button class="btn btn-danger" id="del">删除</button>
+			</div>
+			<div id="queue">
+			</div>
+			<div id="rightSide">
+				<div class="waterfall">
+					<video id="video" muted autoplay></video>
+					<video id="appear_video" autoplay></video>
+					<div class="imagePlay">
+						<img id='image'>
+					</div>
+					<canvas id="canvas" width="1280" height="720"></canvas>
+				</div>
+			</div>
+		</div>
+		<div id="videoSrc" class="modals">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="select">
+						<label for="videoSource">视频源: </label><select id="videoSource"></select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="modal_set_frame" class="modals">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class='fps'><span id="fps">8</span>帧/秒</div>
+					<div class="item" id="frame">
+						<input type="range" id="input_num" value="8" min="1" max="30" />
+					</div>
+				</div>
+				<footer class="modal-footer">
+					<button id="cancel_range_num_btn">确定</button>
+				</footer>
+			</div>
+		</div>
+		<div id="relay" class="modals">
+			<div class="modal-content">
+				<div class="modal-body">
+					设置倒计时：<input type="number" id="Countdown" value='10' min='10' />秒
+					<br>
+					间隔时间：<input type="number" id="intetval" value='0.5' min='0.1' />秒
+				</div>
+				<footer class="modal-footer">
+					<button id="relay_btn">开始</button>
+					<button id="relay_cancel">取消</button>
+				</footer>
+			</div>
+		</div>
+		<div id="cover" class="modals">
+			<div class="modal-content">
+				<div class="modal-body">
+					片名：<input type="text" id='title' />
+					<br>
+					导演：<input type="text" id='editor' />
+				</div>
+				<footer class="modal-footer">
+					<button id="tanslate" class='btn'>生成</button>
+				</footer>
+			</div>
+		</div>
+		<div id="percent" class="modals">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p>进度：<span id='per'>0</span></p>
+					<br>
+				</div>
+			</div>
+		</div>
+		<div id="after">
+			<div class="img-container" id="outer-canvas">
+				<canvas id="my-canvas" width="800" height="450"></canvas>
+			</div>
+		</div>
+		<div id="fin">
+			<p>输出</p>
+			<div class="img-container" id="out">
+				<canvas id="a4_out" width="2480" height="3508"></canvas>
+			</div>
+		</div>
+		<div id="audio_div" class="modals">
+			<div class="modal-content">
+				<div class="modal-body">
+					开始帧：<input type="number" id='start_frame' placeholder="1" />
+					<br>
+					结束帧：<input type="number" id='end_frame' placeholder="1" />
+				</div>
+				<footer class="modal-footer">
+					<button id="audio_play">播放</button>
+					<button id="audio_check">确定</button>
+					<button id="audio_cancel">取消</button>
+				</footer>
+			</div>
+		</div>
+		<div id="conduct" class="modals">
+			<p>请将手机横屏！</p>
+		</div>
+		<script src='static/js/recoder.js'></script>
+		<script src='static/js/init.js'></script>
+		<script src='static/js/main.js'></script>
+</body>
+
+</html>

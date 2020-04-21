@@ -1,0 +1,464 @@
+* {
+	width:100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+li {
+  list-style: none;
+}
+body .container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+#conduct {
+  display: none;
+}
+#conduct {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 50px;
+}
+#conduct p {
+  color: white;
+  position: relative;
+  top: 30%;
+}
+/* 顶部 */
+#topSide {
+  width: 100%;
+  height:30%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+#topSide::-webkit-scrollbar {
+  display: none;
+}
+#topSide .glyphicon{
+	width:20px;
+	height:20px;
+	color:white;
+	position: fixed;
+	top:10px;
+	right:20px;
+	z-index: 10;
+	transform: rotate(90deg);
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-moz-transform: rotate(90deg); /* Firefox */
+	-webkit-transform: rotate(90deg); /* Safari 和 Chrome */
+	-o-transform: rotate(90deg); /* Opera */
+}
+#topSide video {
+  width: 100%;
+  height: 100%;
+  margin:1px;
+  
+}
+/* 底部 */
+#bottomSide {
+ width: 100%;
+ height:70%;
+ display: -webkit-flex;
+ display: flex;
+ -webkit-flex-direction: row;
+ flex-direction: row;
+ position: relative;
+}
+/* 底部左侧菜单栏 */
+#bottomSide #leftSide{
+  width:60px;
+  height:100%;
+  background: #ffcc00;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+#bottomSide #leftSide .buttonImg{
+	width:50px;
+	height:50px;
+	background-size: cover;
+	margin:0 auto;
+	transform: rotate(90deg);
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-moz-transform: rotate(90deg); /* Firefox */
+	-webkit-transform: rotate(90deg); /* Safari 和 Chrome */
+	-o-transform: rotate(90deg); /* Opera */
+}
+#bottomSide #leftSide .buttonPlay{
+	/* width:140%; */
+	height:auto;
+	margin-left: 20px;
+}
+#left-side{
+	width:200px;
+	height:20px;
+	position: absolute;
+	top:16%;
+	left:-8%;
+	transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-moz-transform: rotate(90deg); 
+	-webkit-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+}
+.pages {
+	width: 100px;
+	height:20px;
+	border: 1px solid black;
+	border-radius: 4px;
+  }
+  .copyButton{
+	  width: 100px;
+	  height:40px;
+	  display: flex;
+     -webkit-flex-direction: row;
+	  flex-direction: row;
+	  transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-moz-transform: rotate(90deg); 
+	-webkit-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	position: absolute;
+	bottom:20%;
+	left:8%;
+  }
+/* 右侧摄像栏 */
+#bottomSide #rightSide{
+  width:60%;
+  height:100%;
+  position: absolute;
+  top:0;
+  right:0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
+#bottomSide #rightSide .waterfall{
+  width: 600px;
+  height:200px;
+  transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-moz-transform: rotate(90deg); 
+	-webkit-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+}
+.imagePlay{
+  width:100%;
+  height: 100%;
+	position: absolute;
+	top:0;
+	right:0;
+}
+#image{
+  width: 100%;
+  height:auto;
+  background-size: cover;
+}
+#video{
+  display: block;
+}
+/*帧队列*/
+#queue {
+	width: 40px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	white-space: nowrap;
+	display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+	flex-direction: column;
+	position: absolute;
+	right:60%;
+	top:0;
+  }
+  #queue img {
+	display: inline-table;
+	vertical-align: top;
+	width:40px;
+	height:30px;
+	margin:6px 0;
+	transform: rotate(90deg);
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-moz-transform: rotate(90deg); /* Firefox */
+	-webkit-transform: rotate(90deg); /* Safari 和 Chrome */
+	-o-transform: rotate(90deg); /* Opera */
+  }
+#appear_video{
+	display: none;
+	position: absolute;
+	top:0;
+	right:0;
+}
+#rightSide video{
+	width:100%;
+	height:100%;
+}
+/* 控制面板 */
+#canvas{
+	position: absolute;
+	top:0;
+	right:0;
+	display: none;
+}
+#continue {
+  display: none;
+}
+.icon-user-camera {
+  display: block;
+  position: absolute;
+  left: 0;
+  z-index: 5;
+
+  background-image: url("./icon/camera.png"); /*引入图片图片*/
+
+  background-repeat: no-repeat; /*设置图片不重复*/
+
+  background-position: 63px -5px; /*图片显示的位置*/
+
+  width: 220px; /*设置图片显示的宽*/
+
+  height: 20px; /*图片显示的高*/
+}
+
+.icon-user-add {
+  display: block;
+  position: absolute;
+  left: 0;
+  z-index: 5;
+
+  background-image: url("./icon/eject.png"); /*引入图片图片*/
+
+  background-repeat: no-repeat; /*设置图片不重复*/
+
+  background-position: 63px -5px; /*图片显示的位置*/
+
+  width: 220px; /*设置图片显示的宽*/
+
+  height: 50px; /*图片显示的高*/
+}
+.icon-user-play {
+  display: block;
+  position: absolute;
+  left: 0;
+  z-index: 5;
+
+  background-image: url("./icon/play.png"); /*引入图片图片*/
+
+  background-repeat: no-repeat; /*设置图片不重复*/
+
+  background-position: 63px -5px; /*图片显示的位置*/
+
+  width: 220px; /*设置图片显示的宽*/
+
+  height: 50px; /*图片显示的高*/
+}
+
+.thumb {
+  width: 150px;
+  height: 75px;
+  margin-bottom: 10px;
+}
+.thumb img {
+  width: 90%;
+  border: 2px solid white;
+  border-radius: 10px 10px;
+  background: -webkit-linear-gradient(
+    rgb(231, 231, 231),
+    rgb(167, 167, 167)
+  ); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(
+    rgb(231, 231, 231),
+    rgb(167, 167, 167)
+  ); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(
+    rgb(231, 231, 231),
+    rgb(167, 167, 167)
+  ); /* Firefox 3.6 - 15 */
+  background: linear-gradient(
+    rgb(231, 231, 231),
+    rgb(167, 167, 167)
+  ); /* 标准的语法 */
+}
+
+#modal_set_frame .modal-content {
+  height: 300px;
+}
+#input_num {
+  margin-top: 5px;
+  margin-left: 6%;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 300px;
+  border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 15px;
+  border-radius: 10px; /*将轨道设为圆角的*/
+  box-shadow: 0 1px 1px #def3f8, inset 0 0.125em 0.125em #0d1112; /*轨道内置阴影效果*/
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+  background: #ffffff;
+  border-radius: 50%; /*外观设置为圆形*/
+  border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+  box-shadow: 0 0.125em 0.125em #3b4547; /*添加底部阴影*/
+}
+.fps {
+  width: 80px;
+  height: 40px;
+  margin-top: 5px;
+  margin-left: 35%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  background: white;
+  border-radius: 10px 10px; /*外观设置为圆形*/
+}
+#cancel_range_num_btn {
+  width: 70px;
+  height: 35px;
+  margin-bottom: 2px;
+}
+.modals .select label,
+.modals .select select{
+  font-size: 16px;
+  height:20px;
+}
+.modals .select select option{
+  transform: rotate(90deg);
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-moz-transform: rotate(90deg); /* Firefox */
+	-webkit-transform: rotate(90deg); /* Safari 和 Chrome */
+	-o-transform: rotate(90deg); /* Opera */
+}
+/* 阴影层 */
+.modals {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  width: 50%;
+  max-width: 700px;
+  height: 40%;
+  max-height: 500px;
+  margin: 100px auto;
+  border-radius: 10px;
+  background-color: #999;
+  -webkit-animation: zoom 0.6s;
+  animation: zoom 0.6s;
+  resize: both;
+  overflow: auto;
+  transform: rotate(90deg);
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-moz-transform: rotate(90deg); /* Firefox */
+	-webkit-transform: rotate(90deg); /* Safari 和 Chrome */
+	-o-transform: rotate(90deg); /* Opera */
+
+}
+.modal-body .item img {
+  width: 50%;
+  margin-left: 23%;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.modal-footer {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+.modal-footer button {
+  width: 60px;
+  height: 35px;
+  padding: 5px;
+  margin-right: 10px;
+  font-size: 5px;
+  color: white;
+  border-radius: 5px;
+  background-color: cornflowerblue;
+}
+#del {
+  background: red;
+}
+#stop_audio {
+  /* display: none; */
+  background: green;
+}
+.warper {
+  clear: both;
+  margin: 10px;
+  display: block;
+  min-height: 32px;
+}
+audio {
+  display: none;
+}
+.voiceItem {
+  background-color: skyblue;
+  min-width: 100px;
+  min-height: 32px;
+  border-radius: 3px;
+  float: right;
+  text-align: center;
+  background-image: url("./icon/play.png"); /*引入图片图片*/
+
+  background-repeat: no-repeat; /*设置图片不重复*/
+  background-size: 30px 30px;
+  background-position: 67px 0px; /*图片显示的位置*/
+  cursor: pointer;
+  line-height: 32px;
+  text-indent: 10px;
+}
+.modal-footer button:hover,
+.modal-footer button:focus {
+  background-color: #95b4ed;
+  cursor: pointer;
+}
+
+#my-canvas {
+  display: none;
+}
+#after {
+  display: none;
+}
+#fin {
+  display: none;
+}
+/* 生成作品框 */
+.modals .modal-body input{
+  height:40px;
+}
+@media (max-width: 768px) {
+  #conduct {
+    display: block;
+  }
+}
